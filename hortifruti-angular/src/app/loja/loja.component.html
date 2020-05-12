@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+
+        <!--Formulário-->
+        <div class="col-md-12">
+            <div>
+                <h3 class="text-center mb-4 mt-4 text-monospace">Cadastre um produto</h3>
+
+                <div class="form-group">
+
+                    <label for="nome" class="text-monospace">Nome:</label>
+                    <input type="text" name="nome" id="titulo" class="form-control" placeholder="Digite o nome"
+                        [(ngModel)]="produto.nome">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="preco" class="text-monospace">Preço:</label>
+                    <input type="number" name="preco" id="titulo" class="form-control" placeholder="Digite o preço"
+                        [(ngModel)]="produto.preco">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="imagem" class="text-monospace">Imagem:</label>
+                    <input type="text" name="imagem" id="titulo" class="form-control"
+                        placeholder="Digite a URL da imagem" [(ngModel)]="produto.imagem">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="estoque" class="text-monospace">Quantidade em estoque:</label>
+                    <input type="number" name="estoque" id="titulo" class="form-control"
+                        placeholder="Digite a quantidade em estoque" [(ngModel)]="produto.qtdEstoque">
+
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-outline-info w-25" (click)="cadastrar()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <!--Formulário-->
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-cols-3 mt-4">
+        <div class="card-body" *ngFor="let produtos of listaProdutos">
+            <img class="card-img-top" style="height: 227px" src="{{produtos.imagem}}" alt="">
+            <div class="card-title">
+                {{produtos.nome}}
+            </div>
+
+            <div>
+                R$ {{produtos.preco}}
+            </div>
+
+            <div>
+                {{produtos.qtdEstoque}}
+            </div>
+            <button class="btn btn-outline-info mr-3" [routerLink]="['/editar', produtos.id]">
+                Editar
+            </button>
+            <button class="btn btn-outline-danger mr-3" [routerLink]="['/deletar', produtos.id]">
+                Apagar
+            </button>
+
+        </div>
+    </div>
+</div>
